@@ -1,20 +1,20 @@
-Program GetFileNum
+ï»¿Program GetFileNum
    Implicit None
    integer :: n
    External ToDoOneFile
    call DoWithWildcard( "*.txt" , ToDoOneFile , n )
-   write(*,*) '¹²',n,'¸öÎÄ¼ş'
+   write(*,*) 'å…±',n,'ä¸ªæ–‡ä»¶'
 End Program GetFileNum
 
 Subroutine ToDoOneFile( cFile , iLoop )
    Character( Len = * ) , Intent( IN ) :: cFile
    Integer , Intent( IN ) :: iLoop
-   Write( * , * ) 'µÚ',iLoop,'¸öÎÄ¼ş£º',cFile
+   Write( * , * ) 'ç¬¬',iLoop,'ä¸ªæ–‡ä»¶ï¼š',cFile
 End Subroutine ToDoOneFile
 
    
 Subroutine DoWithWildcard(cWildcard,CallBack,iTotal)
-   !// ÏÂÒ»¾ä´úÂë£¬Èç¹ûÊÇ Compaq »ò Digital£¬Ğè¸ÄÎª Use DFLib
+   !// ä¸‹ä¸€å¥ä»£ç ï¼Œå¦‚æœæ˜¯ Compaq æˆ– Digitalï¼Œéœ€æ”¹ä¸º Use DFLib
    Use IFPort , only : GetFileInfoQQ , GetLastErrorQQ , FILE$INFO , FILE$LAST , FILE$ERROR , FILE$FIRST , ERR$NOMEM , ERR$NOENT , FILE$DIR
    Implicit None
    Interface 
@@ -34,10 +34,10 @@ Subroutine DoWithWildcard(cWildcard,CallBack,iTotal)
        iLength = GetFileInfoQQ( cWildCard , stInfo , iWildhandle )
        If (( iWildhandle == FILE$LAST) .OR.( iWildhandle == FILE$ERROR )) then
          Select Case (GetLastErrorQQ())
-         Case (ERR$NOMEM)  !//ÄÚ´æ²»×ã
+         Case (ERR$NOMEM)  !//å†…å­˜ä¸è¶³
            iTotal = - 1
            return
-         Case (ERR$NOENT)  !//Åöµ½Í¨Åä·ûĞòÁĞÎ²
+         Case (ERR$NOENT)  !//ç¢°åˆ°é€šé…ç¬¦åºåˆ—å°¾
            return
          Case Default
            iTotal = 0

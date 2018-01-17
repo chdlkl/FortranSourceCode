@@ -1,10 +1,10 @@
-Module test
+ï»¿Module test
   Contains
-  !//Çò×ø±ê×ª»»Ö±½Ç×ø±ê
+  !//çƒåæ ‡è½¬æ¢ç›´è§’åæ ‡
   Function Spheral2xyz( lon,lat,r ) Result(res)
     Implicit none
     Real :: lon, lat, r
-    Real :: x, y, z, h, res(3)  !//×¢Òâ£¬´Ë´¦µÄ·µ»ØÖµ¿ÉÒÔ¶¨ÒåÎªÊı×é
+    Real :: x, y, z, h, res(3)  !//æ³¨æ„ï¼Œæ­¤å¤„çš„è¿”å›å€¼å¯ä»¥å®šä¹‰ä¸ºæ•°ç»„
     h = r * cosd(lat)
     x = h * cosd(lon)
     y = h * sind(lon)
@@ -16,7 +16,7 @@ End Module test
 Program main
   Use test
   Real :: xyz(3)
-  xyz = Spheral2xyz( 30.0,90.0,1.0 )  !//ÓÃÍ¬ÑùĞÎ×´µÄÊı×é½ÓÊÕ·µ»ØÖµ
-  !//·µ»ØÖµºÍ½ÓÊÕ·µ»ØÖµµÄÊı×éĞÎ×´±ØĞëÒ»ÖÂ£¬ÀàĞÍ²»Ò»¶¨Ò»ÖÂ
+  xyz = Spheral2xyz( 30.0,90.0,1.0 )  !//ç”¨åŒæ ·å½¢çŠ¶çš„æ•°ç»„æ¥æ”¶è¿”å›å€¼
+  !//è¿”å›å€¼å’Œæ¥æ”¶è¿”å›å€¼çš„æ•°ç»„å½¢çŠ¶å¿…é¡»ä¸€è‡´ï¼Œç±»å‹ä¸ä¸€å®šä¸€è‡´
   Write(*,*) xyz
 End Program main

@@ -1,4 +1,4 @@
-Program main 
+ï»¿Program main 
   Include 'link_fnl_shared.h'
   Use CSIEZ_INT
   Implicit none 
@@ -22,9 +22,9 @@ Program main
     XVEC(I) = xp 
     xp = xp + xinc 
   End do 
-  ! ×ö²åÖµ 
+  ! åšæ’å€¼ 
   call CSIEZ (XDATA, FDATA, XVEC, VALUE) 
-  ! Êä³ö²åÖµ½á¹û 
+  ! è¾“å‡ºæ’å€¼ç»“æœ 
   Do i=1, N 
     Write(*,*) XVEC(i), VALUE(i), sin( XVEC(i) ) 
   End do 

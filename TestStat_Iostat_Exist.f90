@@ -1,22 +1,22 @@
-Program main
+ï»¿Program main
   Implicit None
   Integer :: info, i = 0
   Integer, Allocatable :: a(:)
   Logical :: loc
   !-----------------test allocate-------------------!
-  Allocate( a(10),stat = info )  !//´Ë´¦Îªstat,infoÎªÕûĞÍ±äÁ¿
+  Allocate( a(10),stat = info )  !//æ­¤å¤„ä¸ºstat,infoä¸ºæ•´å‹å˜é‡
   If( info == 0 ) Then
     write(*,*) 'Allocate successfully!'
   Else
     write(*,*) 'Allocate faile!'
   End If
   !-----------------test inquire--------------------!
-  Inquire( file = '19°à.pdf',Exist = loc )  !//´Ë´¦ÎªExist,locÎªÂß¼­±äÁ¿
-  If( loc ) write(*,*) '19°à.pdf´æÔÚ£¡'
+  Inquire( file = '19ç­.pdf',Exist = loc )  !//æ­¤å¤„ä¸ºExist,locä¸ºé€»è¾‘å˜é‡
+  If( loc ) write(*,*) '19ç­.pdfå­˜åœ¨ï¼'
   !-----------------test iostat---------------------!
   Open( 101, file = 'test.dat' )
   Do 
-    Read(101,*,iostat = info)  !//iostat³öÏÖÔÚreadÓï¾äÖĞ,¶ø²»ÊÇopenÓï¾ä
+    Read(101,*,iostat = info)  !//iostatå‡ºç°åœ¨readè¯­å¥ä¸­,è€Œä¸æ˜¯openè¯­å¥
     If( info/=0 ) Exit   
     i = i + 1
   End Do

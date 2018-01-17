@@ -1,4 +1,4 @@
-Program main
+锘縋rogram main
   Implicit none
   Integer, parameter :: m = 3, n = 3
   Integer :: a(m,n) = Reshape( [ 5, 4, 7, 2, 5, 8, 6, 4, 5 ], [ m,n ] )
@@ -9,7 +9,7 @@ Program main
   k = size(a,dim=2)
   
   print*, k
-  Write (*,'(3x,g0)') '排序之前:'
+  Write (*,'(3x,g0)') '鎺掑簭涔嬪墠:'
   Do i = 1, L
     Write (*,*) ( a(i,j), j = 1, k )
   End Do
@@ -24,7 +24,7 @@ Program main
     End Do
   End Do
   
-  Write (*,'(3x,g0)') '排序之后:'
+  Write (*,'(3x,g0)') '鎺掑簭涔嬪悗:'
   Do i = 1, L
     Write (*,*) ( a(i,j), j = 1, k )
   End Do

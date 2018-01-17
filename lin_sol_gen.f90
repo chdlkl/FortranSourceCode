@@ -1,4 +1,4 @@
-program main
+Ôªøprogram main
   include 'link_fnl_shared.h' 
   use lin_sol_gen_int
   implicit none
@@ -6,7 +6,7 @@ program main
   real :: B(3,1) = [-1./16,-1./16,15./16]
   real :: X(3,1) = 0.
 
-  call lin_sol_gen(A,B,X) ! A*X=B,Ω‚X
+  call lin_sol_gen(A,B,X) ! A*X=B,Ëß£X
   write(*,"(3F6.3)") X
   stop
 end program

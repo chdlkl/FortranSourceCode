@@ -1,4 +1,4 @@
-Program Main
+ï»¿Program Main
   Implicit None
   Integer :: n
   Integer,External :: fact
@@ -7,18 +7,18 @@ Program Main
   Write(*,"(I2,'!=',I8)") n,fact(n)
 End Program Main
   
-Recursive Integer Function fact(n) result(ans)  !//result¿ÉÒÔÓÃÀ´ÔÚ³ÌĞò´úÂëÖĞÊ¹ÓÃÁíÍâÒ»¸öÃû×ÖÀ´ÉèÖÃº¯ÊıµÄ´«»ØÖµ£¬ÕâÀïÓÃans´úÌæÔ­À´µÄfact£»²¢ÇÒ¿ÉÒÔ²»ÓÃÔÚ³ÌĞòÖĞ¶¨Òå
+Recursive Integer Function fact(n) result(ans)  !//resultå¯ä»¥ç”¨æ¥åœ¨ç¨‹åºä»£ç ä¸­ä½¿ç”¨å¦å¤–ä¸€ä¸ªåå­—æ¥è®¾ç½®å‡½æ•°çš„ä¼ å›å€¼ï¼Œè¿™é‡Œç”¨ansä»£æ›¿åŸæ¥çš„factï¼›å¹¶ä¸”å¯ä»¥ä¸ç”¨åœ¨ç¨‹åºä¸­å®šä¹‰
   Implicit None
   Integer,Intent(in) :: n
   
-  If(n<0) Then  !//²»ºÏÀíµÄÊäÈë
-    ans=-1    !//Ëæ±ãÉèÖÃÒ»¸öÊıÖµ
-    Return  !//n²»ºÏÀí£¬Ö±½Óreturn
+  If(n<0) Then  !//ä¸åˆç†çš„è¾“å…¥
+    ans=-1    !//éšä¾¿è®¾ç½®ä¸€ä¸ªæ•°å€¼
+    Return  !//nä¸åˆç†ï¼Œç›´æ¥return
   Else If(n<=1) Then
     ans=1
-    Return  !//²»ÓÃÔÙÏòÏÂµİ¹é£¬return
+    Return  !//ä¸ç”¨å†å‘ä¸‹é€’å½’ï¼Œreturn
   End If
-!//»áÖ´ĞĞµ½ÕâÀï£¬´ú±ín>1£¬ÀûÓÃn*(n-1)À´¼ÆËãn!
-  ans=n*fact(n-1)  !//Èç¹û¡°*¡±±ä³É¡°+¡±£¬ÊÇ½×³Ë¼ÆËã£¬·ñÔòÊÇÀÛ¼ÓÔËËã
+!//ä¼šæ‰§è¡Œåˆ°è¿™é‡Œï¼Œä»£è¡¨n>1ï¼Œåˆ©ç”¨n*(n-1)æ¥è®¡ç®—n!
+  ans=n*fact(n-1)  !//å¦‚æœâ€œ*â€å˜æˆâ€œ+â€ï¼Œæ˜¯é˜¶ä¹˜è®¡ç®—ï¼Œå¦åˆ™æ˜¯ç´¯åŠ è¿ç®—
   Return
 End function fact

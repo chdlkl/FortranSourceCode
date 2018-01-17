@@ -1,12 +1,12 @@
-Program CopyFile
+ï»¿Program CopyFile
   Implicit none 
   Integer :: i
   Integer :: startfile, stopfile
   Character(len=80) :: str = '', filename
   
-  Write ( *,'(1x,a)' ) "ÇëÊäÈë¿½±´ÎÄ¼şºÅ:"
+  Write ( *,'(1x,a)' ) "è¯·è¾“å…¥æ‹·è´æ–‡ä»¶å·:"
   Read ( *,* ) startfile
-  Write ( *,'(1x,a)' ) "ÇëÊäÈë½ØÖ¹ÎÄ¼şºÅ:"
+  Write ( *,'(1x,a)' ) "è¯·è¾“å…¥æˆªæ­¢æ–‡ä»¶å·:"
   Read ( *,* ) stopfile
   Write ( str,'(g0)' ) startfile
   filename = trim(str)//'.txt'

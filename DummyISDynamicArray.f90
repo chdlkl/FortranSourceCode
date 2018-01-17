@@ -1,4 +1,4 @@
-!// ĞÎ²ÎÎª¶¯Ì¬Êı×é£¬ĞèÒªĞ´½Ó¿Úinterface»òÓÃÄ£¿émodule
+ï»¿!// å½¢å‚ä¸ºåŠ¨æ€æ•°ç»„ï¼Œéœ€è¦å†™æ¥å£interfaceæˆ–ç”¨æ¨¡å—module
 Module mod
   Implicit none 
 Contains 

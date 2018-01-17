@@ -1,5 +1,5 @@
-!//---------------
-!//Êä³öÎªgrdÎÄ¼ş
+ï»¿!//---------------
+!//è¾“å‡ºä¸ºgrdæ–‡ä»¶
 !//---------------
 Subroutine Output_grd(detaG_file,m,n,Dg,Xmin,Xmax,Ymin,Ymax,dx,dy)
  Character*(*) detaG_file

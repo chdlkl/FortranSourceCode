@@ -1,13 +1,13 @@
-Program RandomNumber
+ï»¿Program RandomNumber
   Implicit None
   real :: x(3) = 0.0 , y(2) = 0.0 , a = 0.0
   integer :: i
-  call random_seed() !// Ö»µ÷ÓÃÒ»´Î£¬¶ÁÕß¿É³¢ÊÔÈ¥µô´ËĞĞ²¢¶à´ÎÔËĞĞ
+  call random_seed() !// åªè°ƒç”¨ä¸€æ¬¡ï¼Œè¯»è€…å¯å°è¯•å»æ‰æ­¤è¡Œå¹¶å¤šæ¬¡è¿è¡Œ
   Do i = 1 , size(x)
-    call random_number( x(i) ) !// ¿ÉÒÔÑ­»·µ÷ÓÃ
+    call random_number( x(i) ) !// å¯ä»¥å¾ªç¯è°ƒç”¨
   End Do
-  call random_number(y) !// Ò²¿ÉÒÔÒ»´ÎÉú³ÉÒ»¸öÊı×é
-  call random_number(a) !// µ¥±äÁ¿Ò²¿ÉÒÔ
+  call random_number(y) !// ä¹Ÿå¯ä»¥ä¸€æ¬¡ç”Ÿæˆä¸€ä¸ªæ•°ç»„
+  call random_number(a) !// å•å˜é‡ä¹Ÿå¯ä»¥
   write(*,*) a
   write(*,*) x
   write(*,*) y

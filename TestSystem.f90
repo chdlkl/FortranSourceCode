@@ -1,4 +1,4 @@
-Program test
+﻿Program test
 !DIR$ if defined(_WIN64)
   Logical, parameter :: IsWin = .true.
   Character(*), parameter :: filename = 'out\1.txt'

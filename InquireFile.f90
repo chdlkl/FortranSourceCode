@@ -1,10 +1,10 @@
-!//²éÑ¯ÎÄ¼ş×´Ì¬
+ï»¿!//æŸ¥è¯¢æ–‡ä»¶çŠ¶æ€
 Program Main
   Implicit None
   Character(len=20) :: Filename="test.txt"
   Logical :: alive
   
-  Inquire(File=Filename,Exist=alive)  !//Exist¼ì²éÎÄ¼şÊÇ·ñ´æÔÚ£¬»á·µ»ØÒ»¸ö²¼¶û±äÁ¿¸øºóÃæµÄÂß¼­±äÁ¿£¬·µ»ØÕæÖµ±íÊ¾ÎÄ¼ş´æÔÚ£¬·µ»Ø¼ÙÖµ±íÊ¾ÎÄ¼ş²»´æÔÚ
+  Inquire(File=Filename,Exist=alive)  !//Existæ£€æŸ¥æ–‡ä»¶æ˜¯å¦å­˜åœ¨ï¼Œä¼šè¿”å›ä¸€ä¸ªå¸ƒå°”å˜é‡ç»™åé¢çš„é€»è¾‘å˜é‡ï¼Œè¿”å›çœŸå€¼è¡¨ç¤ºæ–‡ä»¶å­˜åœ¨ï¼Œè¿”å›å‡å€¼è¡¨ç¤ºæ–‡ä»¶ä¸å­˜åœ¨
   If(alive) Then
     Write(*,*) Trim(Filename)," ","Exist."
   Else 
