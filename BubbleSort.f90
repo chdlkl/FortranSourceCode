@@ -1,9 +1,9 @@
-Program BubbleSort
+锘縋rogram BubbleSort
   Implicit none
   Integer :: a(6) = [ 5, 4, 2, 3, 1, 3 ]
   Integer :: i, j, temp
   
-  Write (*,'(3x,g0)') '排序之前:'
+  Write (*,'(3x,g0)') '鎺掑簭涔嬪墠:'
   Write (*,*) a
   Do j = 1, size(a) - 1
     Do i = 1, size(a) - j
@@ -14,6 +14,6 @@ Program BubbleSort
       End If
     End Do
   End Do
-  Write (*,'(3x,g0)') '排序之后:'
+  Write (*,'(3x,g0)') '鎺掑簭涔嬪悗:'
   Write (*,*) a
 End Program BubbleSort
