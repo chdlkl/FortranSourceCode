@@ -1,4 +1,4 @@
-!// ÀûÓÃÁ´±í´æ´¢Ï¡Êè¾ØÕó
+ï»¿!// åˆ©ç”¨é“¾è¡¨å­˜å‚¨ç¨€ç–çŸ©é˜µ
 Program CSR
   Integer, parameter :: m = 5, n = 5  !// depend on your data
   Integer :: i, j, mm, tmp, nn, fileid, first, num
