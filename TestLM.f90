@@ -77,7 +77,7 @@ Program TestLM
       
     End If
 		
-		If ( it==1 ) e = Dot_Product(d,d)  !//若是第一次迭代，计算误差epsilon
+    If ( it==1 ) e = Dot_Product(d,d)  !//若是第一次迭代，计算误差epsilon
     H_Lm = H + lamda*eye   !//根据阻尼系数lamda混合得到H矩阵
     
     !//计算步长delta，并根据步长计算新的参数估计值
@@ -88,8 +88,8 @@ Program TestLM
     a_Lm = a_est + delta(1,1)
     b_Lm = b_est + delta(2,1)
     
-		!//如果||delta||<1e-8，终止迭代
-		If ( Dot_Product(delta(:,1),delta(:,1))<eps ) Exit
+    !//如果||delta||<1e-8，终止迭代
+    If ( Dot_Product(delta(:,1),delta(:,1))<eps ) Exit
 		
     !//计算新的可能估计值对应的y和计算残差e
     y_est_Lm = a_Lm*Exp( -b_Lm*x_1 )
@@ -99,7 +99,7 @@ Program TestLM
     !//根据误差，决定如何更新参数和阻尼系数
 		!//迭代成功时将lamda减小，否则增大lamda
     If ( e_Lm<e ) Then
-		  lamda = lamda/v
+      lamda = lamda/v
       a_est = a_Lm
       b_est = b_Lm
       e = e_Lm
