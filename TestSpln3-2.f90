@@ -1,4 +1,4 @@
-!// Èı´ÎÑùÌõ²åÖµ²âÊÔ´úÂë
+ï»¿!// ä¸‰æ¬¡æ ·æ¡æ’å€¼æµ‹è¯•ä»£ç 
 Program main
   Implicit none
   Integer :: i
