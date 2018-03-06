@@ -19,6 +19,10 @@ Program main
   Do i = 1, n2
     x2(i) = ( i-1 ) * ( t1-t0 ) / ( n2-1 )
   End do
+  !// dy1与dyn分别为第一个数与最后一个数的一阶导数，一般给为0
+  !// dy与ddy存放给定节点的一阶与二阶导数
+  !// ds与dds存放插值节点的一阶与二阶导数
+  !// t为插值区间x1-xn上的积分值，h为工作数组
   call spln( x1, y1, n1, dy1, dyn, x2, y2, n2, dy, ddy, ds, dds, t, h )
   
   Open ( 101, file = 'Interpolation.dat' )
