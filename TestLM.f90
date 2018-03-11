@@ -84,7 +84,7 @@ Program TestLM
     Call LINRG( H_Lm,Inv_H_Lm )   !//使用imsl函数库，计算H_Lm的逆矩阵Inv_H_Lm
     
     rd = Reshape( d,[Ndata,1] )  !//为了满足内部函数Matmul的计算法则，对d的数组形状进行改变
-    delta = Matmul( Inv_H_Lm,matmul( JT,rd ) )  !//delta为增量
+    delta = Matmul( matmul(Inv_H_Lm,JT),rd )  !//delta为增量
     a_Lm = a_est + delta(1,1)
     b_Lm = b_est + delta(2,1)
     
@@ -97,7 +97,7 @@ Program TestLM
     e_Lm = Dot_Product( d_Lm,d_Lm )  !//e_LM等于||y_1 - y_est_LM||
     
     !//根据误差，决定如何更新参数和阻尼系数
-		!//迭代成功时将lamda减小，否则增大lamda
+    !//迭代成功时将lamda减小，否则增大lamda
     If ( e_Lm<e ) Then
       lamda = lamda/v
       a_est = a_Lm
