@@ -1,4 +1,4 @@
-Program TestSgetrf
+ï»¿Program TestSgetrf
   use lapack95
   Implicit none
   Integer, parameter :: n = 3
@@ -15,7 +15,7 @@ Program TestSgetrf
     write(*,'(*(f12.6,3x))') a(i,:)
   End do
   
-  !// Ê¹ÓÃlapackÇó½âÄæ¾ØÕó
+  !// ä½¿ç”¨lapackæ±‚è§£é€†çŸ©é˜µ
   call getrf( a, ipiv, info )
   call getri( a, ipiv, info )
   
