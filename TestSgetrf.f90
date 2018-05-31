@@ -25,7 +25,7 @@
   End do
   
   write(*,'(1x,a)') "checking..."
-  aa = matmul(aa,a)
+  aa = matmul(aa,a)  !// 原矩阵与其逆矩阵的结果为单位矩阵
   Do i = 1, n
     write(*,'(*(f12.6,3x))') aa(i,:)
   End do
