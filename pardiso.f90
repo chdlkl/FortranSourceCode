@@ -1,9 +1,9 @@
 Program CSR
-  !// author: luk
+  !// author: lao A
   !// qq: 735343320
-  Integer, parameter :: m = 5, n = 5  !// depend on your equation
+  Integer, parameter :: n = 5  !// depend on your equation
   Integer :: i, j, mm, tmp, nn, fileid, first, num
-  Real(kind=8) :: matrix(m,n), b(m), x(m)
+  Real(kind=8) :: matrix(n,n), b(n), x(n)
   Real(kind=8), allocatable :: aa(:)
   Integer, allocatable :: ia(:), ja(:)
   
@@ -26,16 +26,12 @@ Program CSR
   
   !// input data
   open ( newunit = fileid, file = 'm.txt' )  !// The sparse matrix data needs to be given by itself
-  Do i = 1, m
-    do j = 1, n
-      read ( fileid,* ) matrix(i,j)
-    end do
-  End do
-  read( fileid,* ) b
+  read ( fileid,* ) matrix
+  read ( fileid,* ) b
   close ( fileid )
   
   nn = 0
-  Do i = 1, m
+  Do i = 1, n
     do j = i, n
       If ( matrix(i,j) /= 0.0 ) then
         nn = nn + 1
@@ -55,7 +51,7 @@ Program CSR
   End if
   
   num = 0  !// calculate the number of no-zero
-  Do i =  1, m
+  Do i =  1, n
     mm = 0  !// calculate the position of no-zero in every row
     do j = i, n
       If ( matrix(i,j) /= 0.0 ) then
