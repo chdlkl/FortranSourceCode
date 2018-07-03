@@ -46,20 +46,83 @@ End Module MKL_FFT
 Program Test_FFT  !// 需要将MKL安装目录下的 MKL_DFTI.f90 文件加入工程
   use MKL_FFT   !// 这句代码必须 *************
   Type( CLS_FFT ) :: FFT !// 这句定义一个 FFT 的过程 ************
-  Integer , parameter :: N = 30 !//不需要2^k 次方整幂
-  Real     :: r(N) = & !// 时间域
-    [3,2,4,6,2,5,7,8,5,3,7,8,4,2,4,7,8,9,3,2,5,7,8,4,2,5,8,9,4,6]
-  Complex  :: f(N/2+1) !// 频率域，为复数,大小为 n/2 + 1
+  Integer :: i, fileid
+  Integer :: N !//需要2^k 次方整幂
+  Real, allocatable :: t(:), r(:)  !// 时间域
+  Complex, allocatable  :: f(:) !// 频率域，为复数,大小为 n/2 
+  character(len=215) :: filename = 'shuju.dat'
 
+  call GetN( N, filename )
+  allocate( t(N), r(N), f(N/2) )
+  
+  open( newunit = fileid, file = trim(filename) )  !// 读取原始信号
+  Do i = 1, N
+    read( fileid, * ) t(i), r(i)
+  End do
+  close( fileid )
+  
   call FFT%Create( N ) !// 创建FFT过程。N 是 FFT 的点数 ************
   f  = FFT%Forward( r )  !// 正向 FFT 变换  *************
-  Do i = 1 , size(f)
-    Write( * , * ) i , f( i ) !// 输出频率域
-  End Do
+  call Output_BWDFFT( t, f, N )
+
   r = FFT%Backward( f ) / n !// 这一句可以做反傅氏变换 *************
-  Do i = 1 , size(r)
-    Write( * , * ) i , r(i) !// 输出反变换
-  End Do
+  call Output_InvFFT( t, r, N )
   call FFT%Destory() !// 销毁 FFT 过程*************
+  
+  deallocate( t, r, f )
   Read(*,*)
 End Program Test_FFT
+  
+  
+Subroutine GetN( N, filename )  !// 得到信号文件的行数
+  Implicit none
+  Integer :: N
+  character(*), intent(in) :: filename
+  integer :: fileid, info
+  
+  open( newunit = fileid, file = trim(filename) )
+  N = 0
+  Do 
+    read( fileid, *, iostat = info )
+    if ( info /= 0 ) exit
+    N = N + 1
+  End do
+  close( fileid )
+  
+End subroutine GetN
+    
+Subroutine Output_BWDFFT( t, f, N )  !// 输出FFT的频谱数据
+  implicit none
+  Integer :: i, fileid
+  Integer, intent(in) :: N
+  Real, intent(in) :: t(N)
+  Complex :: f(N/2)
+  Real :: Fs  !// 采样频率: 一秒钟样点数目
+  Real :: t1, t2, w, w0  !// w0为频率间隔，即基频
+  
+  t1 = t(1); t2 = t(N)
+  Fs = dble(N) / ( t2 - t1 )
+  w0 = Fs / dble(N)  !// 或者w0 = 1.d0 / ( t2 - t1 )
+  
+  open( newunit = fileid, file = 'BWDFFT.dat' )
+  Do i = 1, N/2
+    w = dble(i) * w0
+    write( fileid, * ) w, sqrt( real(f(i))**2 + imag(f(i))**2 )
+  End do
+  close( fileid )
+  
+End subroutine Output_BWDFFT
+  
+Subroutine Output_InvFFT( t, r, N )  !// 输出FFT反变换数据
+  implicit none
+  Integer :: i, fileid
+  Integer, intent(in) :: N
+  Real, intent(in) :: t(N), r(N)
+  
+  open( newunit = fileid, file = 'InvFFT.dat' )
+  Do i = 1, N
+    write( fileid, * ) t(i), r(i)
+  End do
+  close( fileid )
+  
+End subroutine Output_InvFFT
