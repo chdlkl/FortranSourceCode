@@ -47,13 +47,13 @@ Program Test_FFT  !// 需要将MKL安装目录下的 MKL_DFTI.f90 文件加入工程
   use MKL_FFT   !// 这句代码必须 *************
   Type( CLS_FFT ) :: FFT !// 这句定义一个 FFT 的过程 ************
   Integer :: i, fileid
-  Integer :: N !//需要2^k 次方整幂
+  Integer :: N !//不需要2^k次方整幂
   Real, allocatable :: t(:), r(:)  !// 时间域
-  Complex, allocatable  :: f(:) !// 频率域，为复数,大小为 n/2 
+  Complex, allocatable  :: f(:) !// 频率域，为复数,大小为 n/2 + 1
   character(len=215) :: filename = 'shuju.dat'
 
   call GetN( N, filename )
-  allocate( t(N), r(N), f(N/2) )
+  allocate( t(N), r(N), f(N/2+1) )
   
   open( newunit = fileid, file = trim(filename) )  !// 读取原始信号
   Do i = 1, N
@@ -96,7 +96,7 @@ Subroutine Output_BWDFFT( t, f, N )  !// 输出FFT的频谱数据
   Integer :: i, fileid
   Integer, intent(in) :: N
   Real, intent(in) :: t(N)
-  Complex :: f(N/2)
+  Complex :: f(N/2+1)
   Real :: Fs  !// 采样频率: 一秒钟样点数目
   Real :: t1, t2, w, w0  !// w0为频率间隔，即基频
   
@@ -105,9 +105,9 @@ Subroutine Output_BWDFFT( t, f, N )  !// 输出FFT的频谱数据
   w0 = Fs / dble(N)  !// 或者w0 = 1.d0 / ( t2 - t1 )
   
   open( newunit = fileid, file = 'BWDFFT.dat' )
-  Do i = 1, N/2
+  Do i = 1, N/2+1
     w = dble(i) * w0
-    write( fileid, * ) w, sqrt( real(f(i))**2 + imag(f(i))**2 )
+    write( fileid, * ) w, sqrt( real(f(i))**2 + imag(f(i))**2 ), atan( imag(f(i)) / real(f(i)) )
   End do
   close( fileid )
   
